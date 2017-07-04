@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>When not to use arrow functions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <style>
+      button {
+        font-size: 100px;
+      }
+
+      .on {
+        background: #ffc600
+      }
+    </style>
+
+    <button id="pushy">Push Me</button>
+
+    <script>
+      // When you reall need 'this'
+      const button = document.querySelector('#pushy');
+      console.log('------------------------------------');
+      console.log(button);
+      console.log('------------------------------------');
+      button.addEventListener('click', function() {
+        console.log(this);
+        this.classList.toggle('on');
+      });
+
+      // When you need a method to bind to an object
+      const person = {
+        points: 23,
+        score: function() {
+          console.log('------------------------------------');
+          console.log(this);
+          console.log('------------------------------------');
+          this.points++;
+        }
+      }
+
+      // When you need arguments object
+      class Car {
+        constructor(make, colour) {
+          this.make = make;
+          this.colour = colour;
+        }
+      }
+
+      const beemer = new Car('bmw', 'black');
+      const subie = new Car('Subaru', 'white');
+
+      // do not arrow function to explicitly show this
+      Car.prototype.summarize = function() {
+        return `This car is a ${this.make} and the colour is ${this.colour}`;
+      };
+
+      // When you need arguments object
+      const orderChildren = function () {
+        const children = Array.from(arguments);
+        return children.map((child, i) => {
+          return `${child} was #${i + 1}`;
+        })
+        console.log('------------------------------------');
+        console.log(arguments);
+        console.log('------------------------------------');
+      }
+    </script>
+  </body>
+</html>

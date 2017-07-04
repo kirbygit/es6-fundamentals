@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Arrow function</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script>
+      const names = ['kirby', 'keyz', 'james', 'neleh']
+
+      const fullNames = names.map(function(name) {
+        return `${name} fernandez`;
+      });
+
+      const fullNames2 = names.map((name) => {
+        return `${name} fernandez`;
+      });
+
+      // Explicit Return
+      const fullNames3 = names.map((name) => {
+        return `${name} fernandez`;
+      });
+
+      // Implicit Return
+      const fullNames4 = names.map(name => `${name} fernandez` );
+
+      // No Argument
+      const fullNames5 = names.map(() => `cool fernandez` );
+
+      // Arrow functions are anonymous functions
+      console.log('------------------------------------');
+      console.log(fullNames5);
+      console.log('------------------------------------');
+
+      function sayMyName(name) {
+        alert(`Hello ${name}`);
+      }
+
+      sayMyName('Kirby');
+
+      const sayName = (name) => { alert (`Hello ${name}!`) };
+
+      sayName('James');
+    </script>
+  </body>
+</html>
